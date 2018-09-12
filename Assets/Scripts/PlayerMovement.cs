@@ -46,6 +46,7 @@ public class PlayerMovement : MonoBehaviour {
         if (collision.gameObject.layer == LayerMask.NameToLayer("Wall"))
         {
             transform.position = resetPosition;
+            //print("Hit Wall");
         }
     }
 }
