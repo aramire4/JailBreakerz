@@ -6,14 +6,14 @@ public class PlayerMovement : MonoBehaviour {
     public float moveSize = 1.28f;
     public Vector3 pos;
     private Vector3 resetPosition;
-    private Rigidbody2D theRigidbody;
+    //private Rigidbody2D theRigidbody;
 
 
     // Use this for initialization
     void Start () {
         pos = transform.position;
         resetPosition = transform.position;
-        theRigidbody = GetComponent<Rigidbody2D>();
+        //theRigidbody = GetComponent<Rigidbody2D>();
     }
 	
 	// Update is called once per frame
@@ -43,10 +43,12 @@ public class PlayerMovement : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        /*
         if (collision.gameObject.layer == LayerMask.NameToLayer("Wall"))
         {
             transform.position = resetPosition;
             //print("Hit Wall");
         }
+        */
     }
 }
