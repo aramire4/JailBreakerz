@@ -9,59 +9,64 @@ public class PlayerMovement : MonoBehaviour {
 
     private Vector3 resetPosition;
     private int moveAmount;
-    //private Rigidbody2D theRigidbody;
+    private int inputAvailable = 0;
+    private int movesMade = 0;
 
 
     // Use this for initialization
     void Start () {
         pos = transform.position;
         resetPosition = transform.position;
-        //moveAmount =
-        //theRigidbody = GetComponent<Rigidbody2D>();
+        //moveAmount = DiceRoll.movement;
     }
 	
 	// Update is called once per frame
 	void Update () {
-
+        inputAvailable--;
+        moveAmount = DiceRoll.movement;
         if (isMyTurn)
         {
-            //if (Input.GetKeyDown("up"))
-            if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKey(KeyCode.W))
+            if (inputAvailable <= 0 && moveAmount > 0 && movesMade < moveAmount)
             {
-                pos.y += moveSize;
-                //transform.localPosition
-            }
+                if (Input.GetAxis("Vertical") > .5)
+                {
+                    pos.y += moveSize;
+                    inputAvailable = 20;
+                    movesMade++;
+                    //transform.localPosition
+                }
 
-            else if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKey(KeyCode.S))
-            {
-                pos.y -= moveSize;
-            }
+                else if (Input.GetAxis("Vertical") < -.5)
+                {
+                    pos.y -= moveSize;
+                    inputAvailable = 20;
+                    movesMade++;
+                }
 
-            else if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
-            {
-                pos.x += moveSize;
-            }
+                else if (Input.GetAxis("Horizontal") > .5)
+                {
+                    pos.x += moveSize;
+                    inputAvailable = 20;
+                    movesMade++;
+                }
 
-            else if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
-            {
-                pos.x -= moveSize;
+                else if (Input.GetAxis("Horizontal") < -.5)
+                {
+                    pos.x -= moveSize;
+                    inputAvailable = 20;
+                    movesMade++;
+                }
+                transform.position = pos;
+
             }
-            else if(Input.GetKeyDown(KeyCode.R))
+            if (Input.GetKeyDown(KeyCode.R))
             {
                 pos = resetPosition;
+                transform.position = pos;
+                movesMade = 0;
             }
-            transform.position = pos;
+
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        /*
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Wall"))
-        {
-            transform.position = resetPosition;
-            //print("Hit Wall");
-        }
-        */
-    }
 }

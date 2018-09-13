@@ -63,6 +63,8 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\DiceRoll.cs" />
     <Compile Include="Assets\Scripts\PlayerMovement.cs" />
+    <Compile Include="Assets\Scripts\State.cs" />
+    <Compile Include="Assets\Scripts\StateMachine.cs" />
     <Reference Include="UnityEditor.StandardEvents">
       <HintPath>/Users/anthonyramirez/Desktop/UnityProjects/JailBreakerz/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
     </Reference>

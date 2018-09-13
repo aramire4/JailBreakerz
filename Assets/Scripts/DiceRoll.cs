@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class DiceRoll : MonoBehaviour {
-    //public int movement;
+    public static int movement;
 
     private Sprite[] diceSides;
     private SpriteRenderer rend;
@@ -13,7 +13,7 @@ public class DiceRoll : MonoBehaviour {
     // Use this for initialization
     void Start() 
     {
-        //movement = 0;
+        movement = 0;
         rend = GetComponent<SpriteRenderer>();
         diceSides = Resources.LoadAll<Sprite>("DiceSides/");
         rend.sprite = diceSides[5];
@@ -36,7 +36,7 @@ public class DiceRoll : MonoBehaviour {
             randomDiceSide = Random.Range(0, 6);
             rend.sprite = diceSides[randomDiceSide];
             yield return new WaitForSeconds(0.05f);
-            //movement = randomDiceSide + 1;
+            movement = randomDiceSide + 1;
             //Player moves = randomDiceSide+1;
         }
     }
