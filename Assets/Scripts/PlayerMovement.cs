@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class PlayerMovement : MonoBehaviour {
     public float moveSize = 1.28f;
     public Vector3 pos;
@@ -20,6 +21,7 @@ public class PlayerMovement : MonoBehaviour {
         //moveAmount = DiceRoll.movement;
     }
 	
+
 	// Update is called once per frame
 	void Update () {
         inputAvailable--;

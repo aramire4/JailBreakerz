@@ -6,7 +6,6 @@ public class GameState : MonoBehaviour {
     public State currentPlayer;
     public int numberOfPlayers;
 
-
     public enum State
     {
         Player1,
