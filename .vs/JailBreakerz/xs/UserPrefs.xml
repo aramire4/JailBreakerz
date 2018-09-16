@@ -1,6 +1,6 @@
 ﻿<Properties StartupConfiguration="{3361380A-6095-845E-7460-A8BC48BB69F0}|">
   <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="Unity.Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/PlayerMovement.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/GameController.cs">
     <Files>
       <File FileName="Assets/Scripts/PlayerMovement.cs" Line="4" Column="1" />
       <File FileName="Assets/Scripts/Player.cs" Line="16" Column="1" />
@@ -8,7 +8,7 @@
       <File FileName="Assets/Scripts/StateMachine.cs" Line="6" Column="1" />
       <File FileName="Assets/Scripts/State.cs" Line="8" Column="17" />
       <File FileName="Assets/Scripts/TriggerPoints.cs" Line="14" Column="18" />
-      <File FileName="Assets/Scripts/gameController.cs" Line="10" Column="19" />
+      <File FileName="Assets/Scripts/GameController.cs" Line="10" Column="19" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />

@@ -32,31 +32,44 @@ public class PlayerMovement : MonoBehaviour {
             {
                 if (Input.GetAxis("Vertical") > .5)
                 {
-                    pos.y += moveSize;
-                    inputAvailable = 20;
-                    movesMade++;
+                    if(GameController.CheckForIntersect(pos.x, (pos.y+moveSize)) == false)
+                    {
+                        pos.y += moveSize;
+                        inputAvailable = 20;
+                        movesMade++;
+                    }
+
                     //transform.localPosition
                 }
 
                 else if (Input.GetAxis("Vertical") < -.5)
                 {
-                    pos.y -= moveSize;
-                    inputAvailable = 20;
-                    movesMade++;
+                    if (GameController.CheckForIntersect(pos.x, (pos.y - moveSize)) == false)
+                    {
+                        pos.y -= moveSize;
+                        inputAvailable = 20;
+                        movesMade++;
+                    }
                 }
 
                 else if (Input.GetAxis("Horizontal") > .5)
                 {
-                    pos.x += moveSize;
-                    inputAvailable = 20;
-                    movesMade++;
+                    if (GameController.CheckForIntersect((pos.x + moveSize), pos.y) == false)
+                    {
+                        pos.x += moveSize;
+                        inputAvailable = 20;
+                        movesMade++;
+                    }
                 }
 
                 else if (Input.GetAxis("Horizontal") < -.5)
                 {
-                    pos.x -= moveSize;
-                    inputAvailable = 20;
-                    movesMade++;
+                    if (GameController.CheckForIntersect((pos.x - moveSize), pos.y) == false)
+                    {
+                        pos.x -= moveSize;
+                        inputAvailable = 20;
+                        movesMade++;
+                    }
                 }
                 transform.position = pos;
 
