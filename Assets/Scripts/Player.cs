@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Player : MonoBehaviour {
-    public bool active;
+    public static bool active;
     public GameState.State playerState;
 
-    private int strength;
-    private int intelligence;
-    private int looks;
+    List<Item> heldItems = new List<Item>();
+    private static int strength;
+    private static int intelligence;
+    private static int looks;
     //TODO-container of Items
 
     //private StateMachine stateMachine = new StateMachine();
@@ -17,11 +18,13 @@ public class Player : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
        //TODO-Instantiate PlayerState somehow
+
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		
+        //if (GameState.GetCurrentState == playerState) { active = true; }
+
 	}
 
 }

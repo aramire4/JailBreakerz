@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class GameState : MonoBehaviour {
-    public State currentPlayer;
-    public int numberOfPlayers;
+    public static State currentPlayer;
+    public static int numberOfPlayers;
 
     public enum State
     {
@@ -16,7 +16,11 @@ public class GameState : MonoBehaviour {
         Player6
     }
 
-    public void NextPlayer()
+    public static State GetCurrentState(){
+        return currentPlayer;
+    }
+
+    public static void NextPlayer()
     {
         if (currentPlayer == State.Player1)
         {
