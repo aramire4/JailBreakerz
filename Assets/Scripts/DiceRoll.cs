@@ -7,7 +7,7 @@ public class DiceRoll : MonoBehaviour {
 
     private Sprite[] diceSides;
     private SpriteRenderer rend;
-    private int whosTurn = 1;
+    //private int whosTurn = 1;
     private bool coroutineAllowed = true;
 
     // Use this for initialization
@@ -27,7 +27,7 @@ public class DiceRoll : MonoBehaviour {
         }
     }
 
-    private IEnumerator RollTheDice()
+    public IEnumerator RollTheDice()
     {
         coroutineAllowed = false;
         int randomDiceSide = 0;
@@ -37,7 +37,6 @@ public class DiceRoll : MonoBehaviour {
             rend.sprite = diceSides[randomDiceSide];
             yield return new WaitForSeconds(0.05f);
             movement = randomDiceSide + 1;
-            //Player moves = randomDiceSide+1;
         }
     }
 

@@ -7,5 +7,6 @@ public class Item{
     public int identifier;
     public string itemName = "";
     public string description = "";
+    public string location = "";
 
 }

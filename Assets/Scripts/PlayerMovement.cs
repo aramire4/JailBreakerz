@@ -13,18 +13,28 @@ public class PlayerMovement : MonoBehaviour {
     private int inputAvailable = 0;
     private int movesMade = 0;
     private int interractionCheck;
+    private bool hasRolled;
 
     // Use this for initialization
     void Start () {
         pos = transform.position;
         resetPosition = transform.position;
         interractionCheck = 0;
-        //moveAmount = DiceRoll.movement;
+        isMyTurn = false;
+        //isMyTurn = GetComponent<Player>().playerState;
+        //TODO-may have to go in update
     }
 	
 
 	// Update is called once per frame
 	void Update () {
+//        Debug.Log(GameState.currentPlayer);
+        if(GameState.currentPlayer == GetComponent<Player>().playerState){
+            isMyTurn = true;
+        }
+        else{
+            isMyTurn = false;
+        }
 
         inputAvailable--;
         moveAmount = DiceRoll.movement;
@@ -81,6 +91,7 @@ public class PlayerMovement : MonoBehaviour {
                 transform.position = pos;
 
             }
+
             if (Input.GetKeyDown(KeyCode.R))
             {
                 if (interractionCheck != 0)
@@ -99,8 +110,17 @@ public class PlayerMovement : MonoBehaviour {
             if(Input.GetKeyDown(KeyCode.E)){
                 print("end turn");
                 //TODO
+                pos = transform.position;
+                resetPosition = transform.position;
+                interractionCheck = 0;
+                inputAvailable = 0;
+                movesMade = 0;
+                hasRolled = false;
+                //GetComponent<DiceRoll>().coroutineAllowed = true;
                 GameState.NextPlayer();
+                //TODO-something with the dice
             }
+
 
             if (GameController.CheckForInterractions(pos.x, pos.y) == true)
             {

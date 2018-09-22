@@ -6,7 +6,6 @@ using System.Linq;
 
 public class GameController : MonoBehaviour {
 
-    public static GUIText reference;
     //TODO-for instructions on screen
 
     public static GameObject[] walls;
@@ -56,8 +55,16 @@ public class GameController : MonoBehaviour {
             //TODO keep track of what rooms the interractables are located
         }
 
-    }
+        players = GameObject.FindGameObjectsWithTag("Player");
+        playerLen = players.Length;
+        playerArray = new Vector2[playerLen];
 
+        for (int i = 0; i < playerLen; i++)
+        {
+            playerArray[i] = new Vector2(players[i].transform.position.x, players[i].transform.position.y);
+        }
+
+    }
 
 
     public static bool CheckForWalls(float x, float y){
@@ -114,18 +121,10 @@ public class GameController : MonoBehaviour {
         return false;
     }
 
-    static void OnEnter(){
-        reference.text = "Press";
-    }
-
-    static void OnExit(){
-        reference.text = "";
-    }
-
 
     // Update is called once per frame
     void Update () {
-
+        //TODO-fix this so it only uses player positions
         players = GameObject.FindGameObjectsWithTag("Player");
         playerLen = players.Length;
         playerArray = new Vector2[playerLen];
@@ -134,6 +133,5 @@ public class GameController : MonoBehaviour {
         {
             playerArray[i] = new Vector2(players[i].transform.position.x, players[i].transform.position.y);
         }
-
     }
 }
