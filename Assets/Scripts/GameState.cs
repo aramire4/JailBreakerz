@@ -32,31 +32,8 @@ public class GameState : MonoBehaviour {
     public static void NextPlayer()
     {
         //Debug.Log(numberOfPlayers);
-        if (currentPlayer == State.Player1)
-        {
-            currentPlayer = State.Player2;
-        }
-        else if (currentPlayer == State.Player2)
-        {
-            currentPlayer = State.Player3;
-        }
-        else if (currentPlayer == State.Player3)
-        {
-            currentPlayer = State.Player4;
-        }
-        else if (currentPlayer == State.Player4)
-        {
-            currentPlayer = State.Player5;
-        }
-        else if (currentPlayer == State.Player5)
-        {
-            currentPlayer = State.Player6;
-        }
-        else if (currentPlayer == State.Player6)
-        {
-            currentPlayer = State.Player1;
-        }
-        /*
+
+
         if (currentPlayer == State.Player1)
         {
             currentPlayer = State.Player2;
@@ -97,7 +74,7 @@ public class GameState : MonoBehaviour {
         {
             currentPlayer = State.Player1;
         }
-        */
+
     }
         // Use this for initialization
     void Start () {
