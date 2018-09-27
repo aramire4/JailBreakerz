@@ -3,10 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class PlayerMovement : MonoBehaviour {
+public class PlayerMovement : MonoBehaviour
+{
     public float moveSize = 1.28f;
     public Vector3 pos;
     public bool isMyTurn;
+    public bool usingInventory;
+    public GameObject inventoryCanvas;
 
     private Vector3 resetPosition;
     private int moveAmount;
@@ -16,36 +19,41 @@ public class PlayerMovement : MonoBehaviour {
     private bool hasRolled;
 
     // Use this for initialization
-    void Start () {
+    void Start()
+    {
         pos = transform.position;
         resetPosition = transform.position;
         interractionCheck = 0;
         isMyTurn = false;
+        usingInventory = false;
         //isMyTurn = GetComponent<Player>().playerState;
         //TODO-may have to go in update
     }
-	
 
-	// Update is called once per frame
-	void Update () {
-//        Debug.Log(GameState.currentPlayer);
-        if(GameState.currentPlayer == GetComponent<Player>().playerState){
+
+    // Update is called once per frame
+    void Update()
+    {
+        //        Debug.Log(GameState.currentPlayer);
+        if (GameState.currentPlayer == GetComponent<Player>().playerState)
+        {
             isMyTurn = true;
         }
-        else{
+        else
+        {
             isMyTurn = false;
         }
 
         inputAvailable--;
         moveAmount = DiceRoll.movement;
-        if (isMyTurn)
+        if (isMyTurn && usingInventory != true)
         {
             if (inputAvailable <= 0 && moveAmount > 0 && movesMade < moveAmount)
             {
                 if (Input.GetAxis("Vertical") > .5)
                 {
-                    if(GameController.CheckForWalls(pos.x, (pos.y+moveSize)) == false
-                       && GameController.CheckForPlayer(pos.x,(pos.y+moveSize)) == false)
+                    if (GameController.CheckForWalls(pos.x, (pos.y + moveSize)) == false
+                       && GameController.CheckForPlayer(pos.x, (pos.y + moveSize)) == false)
                     {
                         pos.y += moveSize;
                         inputAvailable = 20;
@@ -107,7 +115,8 @@ public class PlayerMovement : MonoBehaviour {
                 }
             }
 
-            if(Input.GetKeyDown(KeyCode.E)){
+            if (Input.GetKeyDown(KeyCode.E))
+            {
                 print("end turn");
                 //TODO
                 pos = transform.position;
@@ -117,15 +126,14 @@ public class PlayerMovement : MonoBehaviour {
                 movesMade = 0;
                 hasRolled = false;
                 //GetComponent<DiceRoll>().coroutineAllowed = true;
-                GameState.NextPlayer();
+                GameObject.Find("StateMachine").GetComponent<GameState>().NextPlayer();
                 //TODO-something with the dice
             }
-
 
             if (GameController.CheckForInterractions(pos.x, pos.y) == true)
             {
                 //Check which room
-                if(Input.GetKeyDown(KeyCode.Return))
+                if (Input.GetKeyDown(KeyCode.Return))
                 {
                     //TODO get item based on position
                     if (interractionCheck != 0)
@@ -136,6 +144,7 @@ public class PlayerMovement : MonoBehaviour {
                     else
                     {
                         print("item added to inventory");
+                        //TODO draw item based on position
                         interractionCheck++;
                         movesMade = moveAmount;
                     }
@@ -151,7 +160,22 @@ public class PlayerMovement : MonoBehaviour {
 
             }
 
+        }//end of isMyTurn
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            //print("Inventory");
+            if (usingInventory == false)
+            {
+                usingInventory = true;
+                inventoryCanvas.GetComponent<CanvasBahavior>().ActivateInventory();
+                //InventoryCanvas.gameObject.setActive(true);
+            }
+            else
+            {
+                inventoryCanvas.GetComponent<CanvasBahavior>().DeactivateInventory();
+                usingInventory = false;
+                //InventoryCanvas.gameObject.setActive(false);
+            }
         }
     }
-
 }

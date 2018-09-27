@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Player : MonoBehaviour {
-    public bool active;
+    //public bool active;
     public GameState.State playerState;
 
     public List<Item> heldItems = new List<Item>();

@@ -54,7 +54,21 @@ public class GameController : MonoBehaviour {
             exitArray[i] = new Vector2(exits[i].transform.position.x, exits[i].transform.position.y);
             //TODO keep track of what rooms the interractables are located
         }
+        /*
+        players = GameObject.FindGameObjectsWithTag("Player");
+        playerLen = players.Length;
+        playerArray = new Vector2[playerLen];
 
+        for (int i = 0; i < playerLen; i++)
+        {
+            //Debug.Log(players[i]);
+            playerArray[i] = new Vector2(players[i].transform.position.x, players[i].transform.position.y);
+        }
+        */
+    }
+
+    public void Awake()
+    {
         players = GameObject.FindGameObjectsWithTag("Player");
         playerLen = players.Length;
         playerArray = new Vector2[playerLen];
@@ -63,7 +77,6 @@ public class GameController : MonoBehaviour {
         {
             playerArray[i] = new Vector2(players[i].transform.position.x, players[i].transform.position.y);
         }
-
     }
 
 
@@ -125,6 +138,7 @@ public class GameController : MonoBehaviour {
     // Update is called once per frame
     void Update () {
         //TODO-fix this so it only uses player positions
+
         players = GameObject.FindGameObjectsWithTag("Player");
         playerLen = players.Length;
         playerArray = new Vector2[playerLen];
@@ -133,5 +147,6 @@ public class GameController : MonoBehaviour {
         {
             playerArray[i] = new Vector2(players[i].transform.position.x, players[i].transform.position.y);
         }
+
     }
 }

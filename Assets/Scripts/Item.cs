@@ -8,5 +8,7 @@ public class Item{
     public string itemName = "";
     public string description = "";
     public string location = "";
+    public string type = "";
+    public string use = "";
 
 }
