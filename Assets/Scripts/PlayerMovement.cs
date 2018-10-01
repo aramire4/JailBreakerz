@@ -17,6 +17,7 @@ public class PlayerMovement : MonoBehaviour
     private int movesMade = 0;
     private int interractionCheck;
     private bool hasRolled;
+    private GameObject current;
 
     // Use this for initialization
     void Start()
@@ -34,7 +35,7 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //        Debug.Log(GameState.currentPlayer);
+        current = GameObject.Find("StateMachine").GetComponent<GameState>().GetObjectFromState();
         if (GameState.currentPlayer == GetComponent<Player>().playerState)
         {
             isMyTurn = true;
@@ -127,6 +128,7 @@ public class PlayerMovement : MonoBehaviour
                 hasRolled = false;
                 //GetComponent<DiceRoll>().coroutineAllowed = true;
                 GameObject.Find("StateMachine").GetComponent<GameState>().NextPlayer();
+                //GameObject.Find("DiceRoller").GetComponent<DiceRoll>().coroutineAllowed = true;
                 //TODO-something with the dice
             }
 
@@ -143,10 +145,30 @@ public class PlayerMovement : MonoBehaviour
                     }
                     else
                     {
-                        print("item added to inventory");
-                        //TODO draw item based on position
-                        interractionCheck++;
-                        movesMade = moveAmount;
+                        //TODO-change database
+                        List<Item> db = GameObject.Find("Items").GetComponent<ItemDatabase>().getItemDatabase();
+                        Item itm = GameObject.Find("Items").GetComponent<ItemDatabase>().drawAndRemove(db);
+                        if (itm != null)
+                        {
+
+                            if ((current.GetComponent<Player>().heldItems.Count < 4) && itm.description != "stat")
+                            {
+                                print("item added to inventory");
+                                current.GetComponent<Player>().heldItems.Add(itm);
+                            }
+                            else if(current.GetComponent<Player>().heldItems.Count == 4)
+                            {
+                                GameObject.Find("Items").GetComponent<ItemDatabase>().returnItem(itm);
+                            }
+                            //TODO draw item based on position
+                            //add to player items
+
+                            interractionCheck++;
+                            movesMade = moveAmount;
+                        }
+                        else{
+                            print("There are no items left here");
+                        }
                     }
 
                 }
@@ -168,13 +190,11 @@ public class PlayerMovement : MonoBehaviour
             {
                 usingInventory = true;
                 inventoryCanvas.GetComponent<CanvasBahavior>().ActivateInventory();
-                //InventoryCanvas.gameObject.setActive(true);
             }
             else
             {
                 inventoryCanvas.GetComponent<CanvasBahavior>().DeactivateInventory();
                 usingInventory = false;
-                //InventoryCanvas.gameObject.setActive(false);
             }
         }
     }

@@ -8,6 +8,7 @@ public class CameraMovement : MonoBehaviour {
 
     public float screenWidth;
     public float screenHeight;
+    public Vector3 pos;
 
     public GameObject currentPlayer;
 
@@ -15,7 +16,8 @@ public class CameraMovement : MonoBehaviour {
 	void Start () {
         screenWidth = Screen.width;
         screenHeight = Screen.height;
-        boundary = 30;
+        boundary = 20;
+        pos = transform.position;
         //set originalCameraPosition;
 	}
 	
@@ -31,10 +33,26 @@ public class CameraMovement : MonoBehaviour {
         */
         /*
         if(currentPlayer.transform.position.x > screenWidth - boundary){
-            transform.position.x += (screenWidth / 2);
+            pos.x += (screenWidth / 2);
         }
+
+        if (currentPlayer.transform.position.x < 0 + boundary)
+        {
+            pos.x -= (screenWidth / 2);
+        }
+
+        if (currentPlayer.transform.position.x > screenHeight - boundary)
+        {
+            pos.y += (screenHeight / 2);
+        }
+
+        if (currentPlayer.transform.position.x < 0 + boundary)
+        {
+            pos.x -= (screenHeight / 2);
+        }
+
+        transform.position = pos;
         */
-
-
+        transform.position = currentPlayer.transform.position;
     }
 }

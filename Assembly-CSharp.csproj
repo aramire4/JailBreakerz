@@ -70,8 +70,12 @@
     <Compile Include="Assets\Scripts\ItemDatabase.cs" />
     <Compile Include="Assets\Scripts\Player.cs" />
     <Compile Include="Assets\Scripts\PlayerMovement.cs" />
+    <Compile Include="Assets\Scripts\PlayerSelection\PlayerSelect.cs" />
     <Compile Include="Assets\Scripts\State.cs" />
     <Compile Include="Assets\Scripts\StateMachine.cs" />
+    <Compile Include="Assets\Scripts\TestMovement.cs" />
+    <Compile Include="Assets\Scripts\TitleScreen\MainScreenScript.cs" />
+    <Compile Include="Assets\Scripts\TitleScreen\NumberOfPlayers.cs" />
     <Compile Include="Assets\Scripts\TriggerPoints.cs" />
     <Reference Include="UnityEditor.StandardEvents">
       <HintPath>/Users/anthonyramirez/Desktop/UnityProjects/JailBreakerz/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>

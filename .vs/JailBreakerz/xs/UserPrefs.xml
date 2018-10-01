@@ -1,16 +1,16 @@
 ﻿<Properties StartupConfiguration="{3361380A-6095-845E-7460-A8BC48BB69F0}|">
   <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="Unity.Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/CanvasBahavior.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/PlayerSelection/PlayerSelect.cs">
     <Files>
-      <File FileName="Assets/Scripts/PlayerMovement.cs" Line="172" Column="19" />
-      <File FileName="Assets/Scripts/Player.cs" Line="7" Column="40" />
-      <File FileName="Assets/Scripts/GameState.cs" Line="9" Column="43" />
-      <File FileName="Assets/Scripts/GameController.cs" Line="150" Column="9" />
-      <File FileName="Assets/Scripts/ItemDatabase.cs" Line="28" Column="33" />
-      <File FileName="Assets/Scripts/Item.cs" Line="11" Column="28" />
-      <File FileName="Assets/Scripts/DiceRoll.cs" Line="22" Column="31" />
-      <File FileName="Assets/Scripts/CameraMovement.cs" Line="25" Column="11" />
-      <File FileName="Assets/Scripts/CanvasBahavior.cs" Line="10" Column="10" />
+      <File FileName="Assets/Scripts/PlayerMovement.cs" Line="27" Column="31" />
+      <File FileName="Assets/Scripts/CameraMovement.cs" Line="33" Column="9" />
+      <File FileName="Assets/Scripts/Player.cs" Line="6" Column="7" />
+      <File FileName="Assets/Scripts/GameController.cs" Line="150" Column="1" />
+      <File FileName="Assets/Scripts/ItemDatabase.cs" Line="22" Column="33" />
+      <File FileName="Assets/Scripts/Item.cs" Line="11" Column="29" />
+      <File FileName="Assets/Scripts/DiceRoll.cs" Line="11" Column="11" />
+      <File FileName="Assets/Scripts/GameState.cs" Line="100" Column="1" />
+      <File FileName="Assets/Scripts/PlayerSelection/PlayerSelect.cs" Line="5" Column="35" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />

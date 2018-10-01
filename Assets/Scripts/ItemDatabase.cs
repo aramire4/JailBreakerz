@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ItemDatabase{
+public class ItemDatabase : MonoBehaviour{
     public List<Item> itemDatabase = new List<Item>();
 
     public List<Item> infirmaryDatabase = new List<Item>();
@@ -25,13 +25,17 @@ public class ItemDatabase{
         apple.description = "Use this item to avoid going to the infirmary once";
         apple.location = "kitchen";
         apple.type = "food";
-        apple.use = "counter"; //uses: counter, self, other
+        apple.use = "counter"; //uses: counter, self, other, stat, move
         itemDatabase.Add(apple);
         //itemDatabase.Add(apple);
         //TODO-add item to it's specific database
 
 	}
 	
+    public List<Item> getItemDatabase(){
+        return itemDatabase;
+    }
+
     public List<Item> getDatabaseFromPosition(float x, float y){
         return null;
         //TODO
@@ -41,14 +45,6 @@ public class ItemDatabase{
         //Check if databse is empty
         if(database.Count == 0){
             //print("There are no cards left");
-            /*
-            Item nothing = new Item();
-            nothing.identifier = 0;
-            nothing.itemName = "Nothing";
-            nothing.description = "There are no cards in this deck";
-            nothing.location = "nowhere";
-            return nothing;
-            */
             return null;
         }
         System.Random rnd = new System.Random();
