@@ -808,6 +808,7 @@ MonoBehaviour:
   numberOfPlayers: 0
   playersSelected: 0
   lockPos: 3.36
+  lockPrefab: {fileID: 1258356888915452, guid: 9d01d2da1542442b79abe5d00734446c, type: 2}
   all:
   - red
   - green
@@ -820,7 +821,7 @@ MonoBehaviour:
   - -6.6
   - -4.01
   - -1.33
-  - 3.35
+  - 1.33
   - 4
   - 6.62
   selected: []

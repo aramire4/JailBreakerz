@@ -10,5 +10,7 @@ public class Item{
     public string location = "";
     public string type = "";
     public string use = "";
+    public bool rare;
+    public int range;
 
 }

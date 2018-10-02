@@ -8,7 +8,8 @@ public class DiceRoll : MonoBehaviour {
     private Sprite[] diceSides;
     private SpriteRenderer rend;
     //private int whosTurn = 1;
-    private bool coroutineAllowed = true;
+    public bool coroutineAllowed = true;
+    public GameObject currentPlayer;
 
     // Use this for initialization
     void Start() 
@@ -19,7 +20,7 @@ public class DiceRoll : MonoBehaviour {
         rend.sprite = diceSides[5];
     }
 
-    private void OnMouseDown()
+    public void OnMouseDown()
     {
         if (coroutineAllowed)
         {
@@ -44,6 +45,10 @@ public class DiceRoll : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-		
-	}
+        currentPlayer = GameObject.Find("StateMachine").GetComponent<GameState>().GetObjectFromState();
+
+        transform.position = new Vector3(currentPlayer.transform.position.x - 5f,
+                                         currentPlayer.transform.position.y + 3f,
+                                         transform.position.z);
+    }
 }

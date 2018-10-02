@@ -10,9 +10,9 @@ public class PlayerMovement : MonoBehaviour
     public bool isMyTurn;
     public bool usingInventory;
     public GameObject inventoryCanvas;
+    public int moveAmount;
 
     private Vector3 resetPosition;
-    private int moveAmount;
     private int inputAvailable = 0;
     private int movesMade = 0;
     private int interractionCheck;
@@ -27,14 +27,15 @@ public class PlayerMovement : MonoBehaviour
         interractionCheck = 0;
         isMyTurn = false;
         usingInventory = false;
-        //isMyTurn = GetComponent<Player>().playerState;
-        //TODO-may have to go in update
+        //TODO-check inventory canvas
+        //inventoryCanvas = GameObject.Find("InventoryCanvas");
     }
 
 
     // Update is called once per frame
     void Update()
     {
+        moveAmount = DiceRoll.movement;
         current = GameObject.Find("StateMachine").GetComponent<GameState>().GetObjectFromState();
         if (GameState.currentPlayer == GetComponent<Player>().playerState)
         {
@@ -46,7 +47,8 @@ public class PlayerMovement : MonoBehaviour
         }
 
         inputAvailable--;
-        moveAmount = DiceRoll.movement;
+
+
         if (isMyTurn && usingInventory != true)
         {
             if (inputAvailable <= 0 && moveAmount > 0 && movesMade < moveAmount)
@@ -126,9 +128,11 @@ public class PlayerMovement : MonoBehaviour
                 inputAvailable = 0;
                 movesMade = 0;
                 hasRolled = false;
+                moveAmount = 0;
                 //GetComponent<DiceRoll>().coroutineAllowed = true;
                 GameObject.Find("StateMachine").GetComponent<GameState>().NextPlayer();
-                //GameObject.Find("DiceRoller").GetComponent<DiceRoll>().coroutineAllowed = true;
+                GameObject.Find("DiceRoller").GetComponent<DiceRoll>().coroutineAllowed = true;
+                DiceRoll.movement = 0;
                 //TODO-something with the dice
             }
 
@@ -137,37 +141,63 @@ public class PlayerMovement : MonoBehaviour
                 //Check which room
                 if (Input.GetKeyDown(KeyCode.Return))
                 {
-                    //TODO get item based on position
                     if (interractionCheck != 0)
                     {
                         print("you can only do that once per turn");
-                        //TODO
                     }
                     else
                     {
                         //TODO-change database
-                        List<Item> db = GameObject.Find("Items").GetComponent<ItemDatabase>().getItemDatabase();
+                        List<Item> db = GameObject.Find("Items").GetComponent<ItemDatabase>().getDatabaseFromPosition(pos.x, pos.y);
                         Item itm = GameObject.Find("Items").GetComponent<ItemDatabase>().drawAndRemove(db);
+
                         if (itm != null)
                         {
-
-                            if ((current.GetComponent<Player>().heldItems.Count < 4) && itm.description != "stat")
+                            if ((current.GetComponent<Player>().heldItems.Count < 4) 
+                                && itm.use != "stat" && itm.type != "hazard")
                             {
                                 print("item added to inventory");
                                 current.GetComponent<Player>().heldItems.Add(itm);
                             }
-                            else if(current.GetComponent<Player>().heldItems.Count == 4)
+
+                            else if (itm.use == "stat")
                             {
+                                int amount = 0;
+                                if (itm.rare == true) amount = 2;
+                                else if (itm.rare == false) amount = 1;
+
+                                if (itm.location == "library") current.GetComponent<Player>().intelligence += amount;
+                                else if (itm.location == "yard") current.GetComponent<Player>().strength += amount;
+                                else if (itm.location == "shower") current.GetComponent<Player>().looks += amount;
+                                print("stats added to your stats");
                                 GameObject.Find("Items").GetComponent<ItemDatabase>().returnItem(itm);
                             }
-                            //TODO draw item based on position
-                            //add to player items
+                            else if (itm.type == "hazard")
+                            {
+                                if (itm.identifier == -1)
+                                {
+                                    //go to infirmary
+                                    pos = HazardMovement.getRandomInfirmaryPoint();
+                                }
+                                else if (itm.identifier == -2){
+                                    //go to solitary
+                                    pos = HazardMovement.getRandomSolitaryPoint();
+                                }
+                                GameObject.Find("Items").GetComponent<ItemDatabase>().returnItem(itm);
+                            }
+
+                            else if ((current.GetComponent<Player>().heldItems.Count >= 4)
+                                     && itm.use != "stat" && itm.type != "hazard"){
+                                print("Inventory is full");
+                                GameObject.Find("Items").GetComponent<ItemDatabase>().returnItem(itm);
+                            }
 
                             interractionCheck++;
                             movesMade = moveAmount;
                         }
                         else{
                             print("There are no items left here");
+                            //TODO-make a thud sound
                         }
                     }
 

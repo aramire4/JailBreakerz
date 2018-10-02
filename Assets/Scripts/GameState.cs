@@ -6,7 +6,7 @@ using System.Linq;
 public class GameState : MonoBehaviour {
     public static State currentPlayer;
     public static State nextPlayer;
-    public static int numberOfPlayers = 6;//GameController.players.Length; //TODO-change to be what the player puts in
+    public static int numberOfPlayers;//GameController.players.Length; //TODO-change to be what the player puts in
 
     public GameObject[] playerlist;
     //public Player[] playerorder = null;
@@ -87,6 +87,8 @@ public class GameState : MonoBehaviour {
     }
         // Use this for initialization
     void Start () {
+        numberOfPlayers = PlayerPrefs.GetInt("NumberOfPlayers");
+        if (GameController.players == null) { GameController.InitPlayers(); }
         playerlist = GameController.players;
         currentPlayer = State.Player1;
         nextPlayer = State.Player1;

@@ -56,6 +56,9 @@ MonoBehaviour:
   moveSize: 1.28
   pos: {x: 0, y: 0, z: 0}
   isMyTurn: 0
+  usingInventory: 0
+  inventoryCanvas: {fileID: 0}
+  moveAmount: 0
 --- !u!114 &114928571908021428
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -67,7 +70,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19717458d884c4885b255cd138b68d84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  active: 0
   playerState: 0
   strength: 0
   intelligence: 0

@@ -26,11 +26,11 @@ public class CameraMovement : MonoBehaviour {
         currentPlayer = GameObject.Find("StateMachine").GetComponent<GameState>().GetObjectFromState();
         //Debug.Log(screenWidth);
         //if(currentPlayer.transform.position.x)
-        /*
+
         transform.position = new Vector3(currentPlayer.transform.position.x,
                                          currentPlayer.transform.position.y,
                                          transform.position.z);
-        */
+
         /*
         if(currentPlayer.transform.position.x > screenWidth - boundary){
             pos.x += (screenWidth / 2);
@@ -53,6 +53,6 @@ public class CameraMovement : MonoBehaviour {
 
         transform.position = pos;
         */
-        transform.position = currentPlayer.transform.position;
+        //transform.position = currentPlayer.transform.position;
     }
 }
