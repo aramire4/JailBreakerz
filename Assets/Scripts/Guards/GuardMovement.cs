@@ -137,6 +137,7 @@ public class GuardMovement : MonoBehaviour {
             {
                 pos = resetPosition;
                 transform.position = pos;
+                movesMade = 0;
             }
 
             if (Input.GetKeyDown(KeyCode.E))
