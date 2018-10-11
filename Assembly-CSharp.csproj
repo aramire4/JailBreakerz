@@ -89,6 +89,7 @@
     <Compile Include="Assets\Scripts\TriggerPoints.cs" />
     <Compile Include="Assets\Scripts\UseItems.cs" />
     <Compile Include="Assets\Scripts\WinConditions\WinTheGame.cs" />
+    <Compile Include="Assets\Scripts\WinScreen.cs" />
     <Reference Include="UnityEditor.StandardEvents">
       <HintPath>/Users/anthonyramirez/Desktop/UnityProjects/JailBreakerz/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
     </Reference>

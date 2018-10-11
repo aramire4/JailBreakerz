@@ -12,6 +12,7 @@ public class Player : MonoBehaviour {
     public int looks;
     public int luck;
     public Vector2 position;
+    public string color;
     //TODO-container of Items
 
     //private StateMachine stateMachine = new StateMachine();

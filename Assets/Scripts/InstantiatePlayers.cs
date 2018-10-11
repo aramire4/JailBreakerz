@@ -54,31 +54,37 @@ public class InstantiatePlayers : MonoBehaviour {
         if (str == "red")
         {
             //return (GameObject.Find("Jail Breaker Red"));
+            prefabs[0].GetComponent<Player>().color = "red";
             return prefabs[0];
         }
         else if (str == "green")
         {
             //return (GameObject.Find("Jail Breaker Green"));
+            prefabs[1].GetComponent<Player>().color = "green";
             return prefabs[1];
         }
         else if (str == "yellow")
         {
             //return (GameObject.Find("Jail Breaker Yellow"));
+            prefabs[2].GetComponent<Player>().color = "yellow";
             return prefabs[2];
         }
         else if (str == "brown")
         {
             //return (GameObject.Find("Jail Breaker Brown"));
+            prefabs[3].GetComponent<Player>().color = "brown";
             return prefabs[3];
         }
         else if (str == "purple")
         {
             //return (GameObject.Find("Jail Breaker Purple"));
+            prefabs[4].GetComponent<Player>().color = "purple";
             return prefabs[4];
         }
         else if (str == "blue")
         {
             //return (GameObject.Find("Jail Breaker Blue"));
+            prefabs[5].GetComponent<Player>().color = "blue";
             return prefabs[5];
         }
         else return null;

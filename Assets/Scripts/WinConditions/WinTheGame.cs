@@ -35,14 +35,14 @@ public class WinTheGame : MonoBehaviour {
                 if (DiceRoll.movement + player.GetComponent<Player>().luck >= 6)
                 {
                     print("you escaped!");
-                    //win the game
-                    //SceneManager.LoadScene("");
-                    //PlayerPrefs.SetString("winner", __)
+                    PlayerPrefs.SetString("winner", player.GetComponent<Player>().color);
+                    SceneManager.LoadScene("WinnerScreen");
                 }
                 else
                 {
                     //move to solitary and lose items & luck
                     EscapeFailed(player);
+                    print("you got caught");
                     //end turn?
                 }
             }
@@ -59,14 +59,14 @@ public class WinTheGame : MonoBehaviour {
                 if (DiceRoll.movement + player.GetComponent<Player>().luck >= 6)
                 {
                     print("you escaped!");
-                    //win the game
-                    //SceneManager.LoadScene("");
-                    //PlayerPrefs.SetString("winner", __)
+                    PlayerPrefs.SetString("winner", player.GetComponent<Player>().color);
+                    SceneManager.LoadScene("WinnerScreen");
                 }
                 else
                 {
                     //move to solitary and lose items & luck
                     EscapeFailed(player);
+                    print("you got caught");
                     //end turn?
                 }
             }
@@ -82,9 +82,8 @@ public class WinTheGame : MonoBehaviour {
                 if (DiceRoll.movement + player.GetComponent<Player>().luck >= 6)
                 {
                     print("you escaped!");
-                    //win the game
-                    //SceneManager.LoadScene("");
-                    //PlayerPrefs.SetString("winner", __)
+                    PlayerPrefs.SetString("winner", player.GetComponent<Player>().color);
+                    SceneManager.LoadScene("WinnerScreen");
                 }
                 else
                 {
