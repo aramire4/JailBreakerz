@@ -129,6 +129,31 @@ public class InstructionCanvas : MonoBehaviour
         }
         else if (place == 1)
         {
+            //door
+            cond1.text = "3 Smarts";
+            cond2.text = "1 Looks";
+            cond3.text = "Distraction";
+            cond4.text = "Key";
+            cond5.text = "Weapon";
+            if (current.GetComponent<Player>().intelligence >= 3 && place == 2)
+                cond1.color = Color.green;
+            else cond1.color = Color.white;
+            if (current.GetComponent<Player>().looks >= 1 && place == 2)
+                cond2.color = Color.green;
+            else cond2.color = Color.white;
+            if (GameObject.Find("Items").GetComponent<UseItems>().HasItemType(current, "distraction") && place == 2)
+                cond3.color = Color.green;
+            else cond3.color = Color.white;
+            if (GameObject.Find("Items").GetComponent<UseItems>().HasCertainItem(current, 8) && place == 2)
+                cond4.color = Color.green;
+            else cond4.color = Color.white;
+            if (GameObject.Find("Items").GetComponent<UseItems>().HasItemType(current, "weapon") && place == 2)
+                cond5.color = Color.green;
+            else cond5.color = Color.white;
+        }
+
+        else if (place == 2)
+        {
             //secretary
             cond1.text = "3 Looks";
             cond2.text = "1 Strength";
@@ -151,30 +176,7 @@ public class InstructionCanvas : MonoBehaviour
                 cond5.color = Color.green;
             else cond5.color = Color.white;
         }
-        else if (place == 2)
-        {
-            //door
-            cond1.text = "3 Smarts";
-            cond2.text = "1 Looks";
-            cond3.text = "Distraction";
-            cond4.text = "Key";
-            cond5.text = "Weapon";
-            if (current.GetComponent<Player>().intelligence >= 3 && place == 2) 
-                cond1.color = Color.green;
-            else cond1.color = Color.white;
-            if (current.GetComponent<Player>().looks >= 1 && place == 2) 
-                cond2.color = Color.green;
-            else cond2.color = Color.white;
-            if (GameObject.Find("Items").GetComponent<UseItems>().HasItemType(current, "distraction") && place == 2) 
-                cond3.color = Color.green;
-            else cond3.color = Color.white;
-            if (GameObject.Find("Items").GetComponent<UseItems>().HasCertainItem(current, 8) && place == 2) 
-                cond4.color = Color.green;
-            else cond4.color = Color.white;
-            if (GameObject.Find("Items").GetComponent<UseItems>().HasItemType(current, "weapon") && place == 2) 
-                cond5.color = Color.green;
-            else cond5.color = Color.white;
-        }
+
     }
 
 }
