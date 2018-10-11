@@ -68,7 +68,7 @@ public class ItemDatabase : MonoBehaviour{
     }
 
     public Item drawAndRemove(List<Item> database){
-        //Check if databse is empty
+        //TODO-make sure that removing from list is correct
         if(database.Count == 0){
             //print("There are no cards left");
             return null;
@@ -88,7 +88,21 @@ public class ItemDatabase : MonoBehaviour{
         return null;
     }
 
-    public void returnItem(Item item){
+    public Item RemoveItemFromInventory(Item item)
+    {
+        GameObject current = GameObject.Find("StateMachine").GetComponent<GameState>().GetObjectFromState();
+        current.GetComponent<Player>().heldItems.Remove(item);
+        return item;
+    }
+
+    public Item RemoveItemPosFromInventory(int pos)
+    {
+        GameObject current = GameObject.Find("StateMachine").GetComponent<GameState>().GetObjectFromState();
+        current.GetComponent<Player>().heldItems.RemoveAt(pos);
+        return current.GetComponent<Player>().heldItems[pos];
+    }
+
+    public void ReturnItem(Item item){
         if(item.location == "infirmary"){
             infirmaryDatabase.Add(item);
         }
@@ -112,7 +126,16 @@ public class ItemDatabase : MonoBehaviour{
         }
     }
 
-    public void putItemInWardens(Item item){
+    public void PlayerLost(GameObject player)
+    {
+        foreach(Item itm in player.GetComponent<Player>().heldItems)
+        {
+            GameObject.Find("Items").GetComponent<UseItems>().RemoveSingleItem(player, itm);
+            PutItemInWardens(itm);
+        }
+    }
+
+    public void PutItemInWardens(Item item){
         wardenOfficeDatabase.Add(item);
     }
 
@@ -127,7 +150,7 @@ public class ItemDatabase : MonoBehaviour{
         Item apple = new Item();
         apple.identifier = 1;
         apple.itemName = "Apple";
-        apple.description = "Use this item to avoid going to the infirmary once";
+        apple.description = "Use this item to avoid going to the infirmary once (food)";
         apple.location = "kitchen";
         apple.type = "food";
         apple.use = "counter";
@@ -138,7 +161,7 @@ public class ItemDatabase : MonoBehaviour{
         Item breadKnife = new Item();
         breadKnife.identifier = 9;
         breadKnife.itemName = "Knife";
-        breadKnife.description = "Use this item to sent a player next to you to the infirmary (range 1)";
+        breadKnife.description = "Use this item to sent a player next to you to the infirmary (range 1) (weapon)";
         breadKnife.location = "kitchen";
         breadKnife.type = "weapon";
         breadKnife.use = "other";
@@ -149,7 +172,7 @@ public class ItemDatabase : MonoBehaviour{
         Item mysteryMeat = new Item();
         mysteryMeat.identifier = 14;
         mysteryMeat.itemName = "Mystery Meat";
-        mysteryMeat.description = "Use this item to send yourself to the infirmary";
+        mysteryMeat.description = "Use this item to send yourself to the infirmary (food)";
         mysteryMeat.location = "kitchen";
         mysteryMeat.type = "food";
         mysteryMeat.use = "self";
@@ -160,7 +183,7 @@ public class ItemDatabase : MonoBehaviour{
         Item kitchenRiot = new Item();
         kitchenRiot.identifier = 15;
         kitchenRiot.itemName = "Kitchen Riot";
-        kitchenRiot.description = "Use this item to send a warden to the kitchen";
+        kitchenRiot.description = "Use this item to send a warden to the kitchen (distraction)";
         kitchenRiot.location = "kitchen";
         kitchenRiot.type = "distraction";
         kitchenRiot.use = "other";
@@ -194,7 +217,7 @@ public class ItemDatabase : MonoBehaviour{
         Item lollipop = new Item();
         lollipop.identifier = 10;
         lollipop.itemName = "Lollipop";
-        lollipop.description = "You were a good patient in your last doctor's visit";
+        lollipop.description = "You were a good patient in your last doctor's visit (food)";
         lollipop.location = "infirmary";
         lollipop.type = "food";
         lollipop.use = "none";
@@ -205,7 +228,7 @@ public class ItemDatabase : MonoBehaviour{
         Item shiv = new Item();
         shiv.identifier = 13;
         shiv.itemName = "Shiv";
-        shiv.description = "Use this item to sent a player next to you to the infirmary (range 1)";
+        shiv.description = "Use this item to sent a player next to you to the infirmary (range 1) (weapon)";
         shiv.location = "infirmary";
         shiv.type = "weapon";
         shiv.use = "other";
@@ -216,12 +239,12 @@ public class ItemDatabase : MonoBehaviour{
         Item infirmaryRiot = new Item();
         infirmaryRiot.identifier = 15;
         infirmaryRiot.itemName = "Infirmary Riot";
-        infirmaryRiot.description = "Use this item to send a warden to the infirmary";
+        infirmaryRiot.description = "Use this item to send a warden to the infirmary (distraction)";
         infirmaryRiot.location = "infirmary";
         infirmaryRiot.type = "distraction";
         infirmaryRiot.use = "other";
         infirmaryRiot.rare = true;
-        kitchenDatabase.Add(infirmaryRiot);
+        infirmaryDatabase.Add(infirmaryRiot);
     }
 
     public void loadLibraryDatabase()
@@ -287,10 +310,10 @@ public class ItemDatabase : MonoBehaviour{
         Item flowers = new Item();
         flowers.identifier = 6;
         flowers.itemName = "Flowers";
-        flowers.description = "Make someone next to you lost a turn (range 1)";
+        flowers.description = "Stops a fight (range 1)";
         flowers.location = "visitor center";
-        flowers.type = "none";
-        flowers.use = "other";
+        flowers.type = "stall";
+        flowers.use = "counter";
         flowers.rare = false;
         flowers.range = 1;
         for (int i = 0; i < 2; i++){ visitorCenterDatabase.Add(flowers); }
@@ -309,7 +332,7 @@ public class ItemDatabase : MonoBehaviour{
         Item knife = new Item();
         knife.identifier = 9;
         knife.itemName = "Knife";
-        knife.description = "Use this item to sent a player next to you to the infirmary (range 1)";
+        knife.description = "Use this item to sent a player next to you to the infirmary (range 1) (weapon)";
         knife.location = "visitor center";
         knife.type = "weapon";
         knife.use = "other";
@@ -320,8 +343,8 @@ public class ItemDatabase : MonoBehaviour{
         Item visitorCenterRiot = new Item();
         visitorCenterRiot.identifier = 15;
         visitorCenterRiot.itemName = "Visitor Center Riot";
-        visitorCenterRiot.description = "Use this item to send a warden to the visitor center";
-        visitorCenterRiot.location = "visitor cneter";
+        visitorCenterRiot.description = "Use this item to send a warden to the visitor center (distraction)";
+        visitorCenterRiot.location = "visitor center";
         visitorCenterRiot.type = "distraction";
         visitorCenterRiot.use = "other";
         visitorCenterRiot.rare = true;
@@ -343,29 +366,29 @@ public class ItemDatabase : MonoBehaviour{
         Item donut = new Item();
         donut.identifier = 4;
         donut.itemName = "Donut";
-        donut.description = "Use this item to make a player next to you lose a turn (range 1)";
+        donut.description = "Use this item to prevent a warden from sending you to solitary (range 1) (food)";
         donut.location = "armory";
         donut.type = "food";
-        donut.use = "other";
+        donut.use = "counter";
         donut.rare = false;
         donut.range = 1;
         for (int i = 0; i < 2; i++){ armoryDatabase.Add(donut); }
 
         Item flashLight = new Item();
         flashLight.identifier = 5;
-        flashLight.itemName = "Donut";
-        flashLight.description = "Use this item to avoid losing a turn";
+        flashLight.itemName = "Flashlight";
+        flashLight.description = "Light up a dark area";
         flashLight.location = "armory";
         flashLight.type = "none";
-        flashLight.use = "counter";
+        flashLight.use = "none";
         flashLight.rare = false;
         flashLight.range = 0;
         for (int i = 0; i < 4; i++){ armoryDatabase.Add(flashLight); }
 
         Item gun = new Item();
-        gun.identifier = 5;
-        gun.itemName = "Donut";
-        gun.description = "Use this item to send someone near you to the infirmary (range 2)";
+        gun.identifier = 7;
+        gun.itemName = "Gun";
+        gun.description = "Use this item to send someone near you to the infirmary (range 2) (weapon)";
         gun.location = "armory";
         gun.type = "weapon";
         gun.use = "other";
@@ -387,7 +410,7 @@ public class ItemDatabase : MonoBehaviour{
         Item sniper = new Item();
         sniper.identifier = 21;
         sniper.itemName = "Sniper";
-        sniper.description = "Send anyone on the board to the infirmary (range infinite)";
+        sniper.description = "Send anyone on the board to the infirmary (range infinite) (weapon)";
         sniper.location = "armory";
         sniper.type = "weapon";
         sniper.use = "other";
@@ -397,7 +420,7 @@ public class ItemDatabase : MonoBehaviour{
 
         Item caught = new Item();
         caught.identifier = -2;
-        caught.itemName = "Get caught";
+        caught.itemName = "Get Caught";
         caught.description = "Go to solitary";
         caught.location = "armory";
         caught.type = "hazard";
@@ -411,10 +434,10 @@ public class ItemDatabase : MonoBehaviour{
         Item flowers = new Item();
         flowers.identifier = 6;
         flowers.itemName = "Flowers";
-        flowers.description = "Make someone next to you lost a turn (range 1)";
-        flowers.location = "visitor center";
-        flowers.type = "none";
-        flowers.use = "other";
+        flowers.description = "Stops a fight (range 1)";
+        flowers.location = "yard";
+        flowers.type = "stall";
+        flowers.use = "counter";
         flowers.rare = false;
         flowers.range = 1;
         for (int i = 0; i < 2; i++){ yardDatabase.Add(flowers); }

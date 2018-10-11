@@ -20,9 +20,18 @@ public class GameController : MonoBehaviour {
     public static int exitLen;
     public static Vector2[] exitArray;
 
+    public static GameObject[] gWalls;
+    public static int gWallLen;
+    public static Vector2[] gWallArray;
+
+
     public static GameObject[] players;
     public static int playerLen;
     public static Vector2[] playerArray;
+
+    public static GameObject[] guards;
+    public static int guardLen;
+    public static Vector2[] guardArray;
     // Use this for initialization
     void Start () {
         walls = GameObject.FindGameObjectsWithTag("Wall");
@@ -54,6 +63,25 @@ public class GameController : MonoBehaviour {
             exitArray[i] = new Vector2(exits[i].transform.position.x, exits[i].transform.position.y);
             //TODO keep track of what rooms the interractables are located
         }
+
+        guards = GameObject.FindGameObjectsWithTag("Guard");
+        guardLen = guards.Length;
+        guardArray = new Vector2[guardLen];
+
+        for (int i = 0; i < guardLen; i++)
+        {
+            guardArray[i] = new Vector2(guards[i].transform.position.x, guards[i].transform.position.y);
+        }
+
+        gWalls = GameObject.FindGameObjectsWithTag("GuardWall");
+        gWallLen = walls.Length;
+        gWallArray = new Vector2[wallLen];
+
+        for (int i = 0; i < 2; i++)
+        {
+            gWallArray[i] = new Vector2(gWalls[i].transform.position.x, gWalls[i].transform.position.y);
+        }
+
 
         if (players == null) { InitPlayers(); }
 
@@ -93,6 +121,19 @@ public class GameController : MonoBehaviour {
         {
             if (Math.Abs(wallArray[i].x - x) <= 0.5 
                 && Math.Abs(wallArray[i].y - y) <= 0.5)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static bool CheckForGWalls(float x, float y)
+    {
+        for (int i = 0; i < gWallLen; i++)
+        {
+            if (Math.Abs(gWallArray[i].x - x) <= 0.5
+                && Math.Abs(gWallArray[i].y - y) <= 0.5)
             {
                 return true;
             }
@@ -142,6 +183,33 @@ public class GameController : MonoBehaviour {
         return false;
     }
 
+    public static bool CheckForGuard(float x, float y)
+    {
+        //TODO-need to keep track of which interractable is where
+        for (int i = 0; i < guardLen; i++)
+        {
+            if (Math.Abs(guardArray[i].x - x) <= 0.5
+                && Math.Abs(guardArray[i].y - y) <= 0.5)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static GameObject ReturnPlayer(float x, float y)
+    {
+        //TODO-need to keep track of which interractable is where
+        for (int i = 0; i < playerLen; i++)
+        {
+            if (Math.Abs(playerArray[i].x - x) <= 0.5
+                && Math.Abs(playerArray[i].y - y) <= 0.5)
+            {
+                return players[i];
+            }
+        }
+        return null;
+    }
 
     // Update is called once per frame
     void Update () {
@@ -154,6 +222,15 @@ public class GameController : MonoBehaviour {
         for (int i = 0; i < playerLen; i++)
         {
             playerArray[i] = new Vector2(players[i].transform.position.x, players[i].transform.position.y);
+        }
+
+        guards = GameObject.FindGameObjectsWithTag("Guard");
+        guardLen = guards.Length;
+        guardArray = new Vector2[guardLen];
+
+        for (int i = 0; i < guardLen; i++)
+        {
+            guardArray[i] = new Vector2(guards[i].transform.position.x, guards[i].transform.position.y);
         }
 
     }

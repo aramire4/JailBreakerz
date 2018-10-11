@@ -63,11 +63,19 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\CameraMovement.cs" />
     <Compile Include="Assets\Scripts\CanvasBahavior.cs" />
+    <Compile Include="Assets\Scripts\DecisionMakerBehavior.cs" />
     <Compile Include="Assets\Scripts\DiceRoll.cs" />
+    <Compile Include="Assets\Scripts\Fight.cs" />
+    <Compile Include="Assets\Scripts\Fighting\AttackDiceRoll.cs" />
+    <Compile Include="Assets\Scripts\Fighting\FightingCanvas.cs" />
     <Compile Include="Assets\Scripts\GameController.cs" />
     <Compile Include="Assets\Scripts\GameState.cs" />
+    <Compile Include="Assets\Scripts\Guards\Guard.cs" />
+    <Compile Include="Assets\Scripts\Guards\GuardMovement.cs" />
+    <Compile Include="Assets\Scripts\Guards\GuardStates.cs" />
     <Compile Include="Assets\Scripts\HazardMovement.cs" />
     <Compile Include="Assets\Scripts\InstantiatePlayers.cs" />
+    <Compile Include="Assets\Scripts\InstructionCanvas.cs" />
     <Compile Include="Assets\Scripts\Item.cs" />
     <Compile Include="Assets\Scripts\ItemDatabase.cs" />
     <Compile Include="Assets\Scripts\Player.cs" />
@@ -79,6 +87,8 @@
     <Compile Include="Assets\Scripts\TitleScreen\MainScreenScript.cs" />
     <Compile Include="Assets\Scripts\TitleScreen\NumberOfPlayers.cs" />
     <Compile Include="Assets\Scripts\TriggerPoints.cs" />
+    <Compile Include="Assets\Scripts\UseItems.cs" />
+    <Compile Include="Assets\Scripts\WinConditions\WinTheGame.cs" />
     <Reference Include="UnityEditor.StandardEvents">
       <HintPath>/Users/anthonyramirez/Desktop/UnityProjects/JailBreakerz/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
     </Reference>

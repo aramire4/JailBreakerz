@@ -28,6 +28,11 @@ public class DiceRoll : MonoBehaviour {
         }
     }
 
+    public void RollFinalDice()
+    {
+        StartCoroutine("RollTheDice");
+    }
+
     public IEnumerator RollTheDice()
     {
         coroutineAllowed = false;

@@ -10,6 +10,7 @@ public class Player : MonoBehaviour {
     public int strength;
     public int intelligence;
     public int looks;
+    public int luck;
     public Vector2 position;
     //TODO-container of Items
 

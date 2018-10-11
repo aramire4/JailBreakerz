@@ -10,7 +10,10 @@ public class CameraMovement : MonoBehaviour {
     public float screenHeight;
     public Vector3 pos;
 
+    public bool playerFocus;
+
     public GameObject currentPlayer;
+    public GameObject currentGuard;
 
 	// Use this for initialization
 	void Start () {
@@ -18,41 +21,29 @@ public class CameraMovement : MonoBehaviour {
         screenHeight = Screen.height;
         boundary = 20;
         pos = transform.position;
+        playerFocus = true;
         //set originalCameraPosition;
 	}
 	
 	// Update is called once per frame
 	void Update () {
         currentPlayer = GameObject.Find("StateMachine").GetComponent<GameState>().GetObjectFromState();
+        currentGuard = GameObject.Find("GuardState").GetComponent<GuardStates>().GetObjectFromState();
         //Debug.Log(screenWidth);
         //if(currentPlayer.transform.position.x)
-
-        transform.position = new Vector3(currentPlayer.transform.position.x,
-                                         currentPlayer.transform.position.y,
-                                         transform.position.z);
-
-        /*
-        if(currentPlayer.transform.position.x > screenWidth - boundary){
-            pos.x += (screenWidth / 2);
-        }
-
-        if (currentPlayer.transform.position.x < 0 + boundary)
+        if (playerFocus)
         {
-            pos.x -= (screenWidth / 2);
+            transform.position = new Vector3(currentPlayer.transform.position.x,
+                                             currentPlayer.transform.position.y,
+                                             transform.position.z);
         }
 
-        if (currentPlayer.transform.position.x > screenHeight - boundary)
+        else
         {
-            pos.y += (screenHeight / 2);
+            transform.position = new Vector3(currentGuard.transform.position.x,
+                                             currentGuard.transform.position.y,
+                                             transform.position.z);
         }
 
-        if (currentPlayer.transform.position.x < 0 + boundary)
-        {
-            pos.x -= (screenHeight / 2);
-        }
-
-        transform.position = pos;
-        */
-        //transform.position = currentPlayer.transform.position;
     }
 }

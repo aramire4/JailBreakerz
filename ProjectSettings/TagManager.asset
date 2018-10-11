@@ -8,6 +8,8 @@ TagManager:
   - Wall
   - Exit
   - Interraction
+  - Inventory
+  - GuardWall
   layers:
   - Default
   - TransparentFX

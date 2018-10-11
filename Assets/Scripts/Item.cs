@@ -8,8 +8,8 @@ public class Item{
     public string itemName = "";
     public string description = "";
     public string location = "";
-    public string type = "";
-    public string use = "";
+    public string type = ""; //TODO - types: weapon, food, distraction, stall, none
+    public string use = ""; //TODO-uses: counter, self, other, stat, move, none
     public bool rare;
     public int range;
 
