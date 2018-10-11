@@ -460,7 +460,7 @@ public class UseItems : MonoBehaviour {
         if (item1 != null)
         {
             player1.GetComponent<Player>().heldItems.Remove(item1);
-            GameObject.Find("Item").GetComponent<ItemDatabase>().ReturnItem(item1);
+            GameObject.Find("Items").GetComponent<ItemDatabase>().ReturnItem(item1);
         }
     }
 
