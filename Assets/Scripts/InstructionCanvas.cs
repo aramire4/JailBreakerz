@@ -135,19 +135,19 @@ public class InstructionCanvas : MonoBehaviour
             cond3.text = "Distraction";
             cond4.text = "Key";
             cond5.text = "Weapon";
-            if (current.GetComponent<Player>().intelligence >= 3 && place == 2)
+            if (current.GetComponent<Player>().intelligence >= 3 && place == 1)
                 cond1.color = Color.green;
             else cond1.color = Color.white;
-            if (current.GetComponent<Player>().looks >= 1 && place == 2)
+            if (current.GetComponent<Player>().looks >= 1 && place == 1)
                 cond2.color = Color.green;
             else cond2.color = Color.white;
-            if (GameObject.Find("Items").GetComponent<UseItems>().HasItemType(current, "distraction") && place == 2)
+            if (GameObject.Find("Items").GetComponent<UseItems>().HasItemType(current, "distraction") && place == 1)
                 cond3.color = Color.green;
             else cond3.color = Color.white;
-            if (GameObject.Find("Items").GetComponent<UseItems>().HasCertainItem(current, 8) && place == 2)
+            if (GameObject.Find("Items").GetComponent<UseItems>().HasCertainItem(current, 8) && place == 1)
                 cond4.color = Color.green;
             else cond4.color = Color.white;
-            if (GameObject.Find("Items").GetComponent<UseItems>().HasItemType(current, "weapon") && place == 2)
+            if (GameObject.Find("Items").GetComponent<UseItems>().HasItemType(current, "weapon") && place == 1)
                 cond5.color = Color.green;
             else cond5.color = Color.white;
         }
@@ -160,19 +160,19 @@ public class InstructionCanvas : MonoBehaviour
             cond3.text = "Flowers";
             cond4.text = "Book";
             cond5.text = "Food";
-            if (current.GetComponent<Player>().looks >= 3 && place == 1)
+            if (current.GetComponent<Player>().looks >= 3 && place == 2)
                 cond1.color = Color.green;
             else cond1.color = Color.white;
-            if (current.GetComponent<Player>().strength >= 1 && place == 1)
+            if (current.GetComponent<Player>().strength >= 1 && place == 2)
                 cond2.color = Color.green;
             else cond2.color = Color.white;
-            if (GameObject.Find("Items").GetComponent<UseItems>().HasCertainItem(current, 6) && place == 1) 
+            if (GameObject.Find("Items").GetComponent<UseItems>().HasCertainItem(current, 6) && place == 2) 
                 cond3.color = Color.green;
             else cond3.color = Color.white;
-            if (GameObject.Find("Items").GetComponent<UseItems>().HasCertainItem(current, 3) && place == 1) 
+            if (GameObject.Find("Items").GetComponent<UseItems>().HasCertainItem(current, 3) && place == 2) 
                 cond4.color = Color.green;
             else cond4.color = Color.white;
-            if (GameObject.Find("Items").GetComponent<UseItems>().HasItemType(current, "food") && place == 1) 
+            if (GameObject.Find("Items").GetComponent<UseItems>().HasItemType(current, "food") && place == 2) 
                 cond5.color = Color.green;
             else cond5.color = Color.white;
         }
