@@ -76,10 +76,10 @@ public class ItemDatabase : MonoBehaviour{
         System.Random rnd = new System.Random();
         Item ret = database[rnd.Next(database.Count)];
         database.Remove(ret);
-        /*
+
         Vector2 pos = GameObject.Find("MainCamera").GetComponent<CameraMovement>().GetPosition();
         GameObject.Find("Items").GetComponent<InstantiateItems>().InstantiateItem(ret, pos);
-        */
+
         return ret;
     }
 

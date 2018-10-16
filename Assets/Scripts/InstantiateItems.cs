@@ -14,8 +14,17 @@ public class InstantiateItems : MonoBehaviour {
         GameObject spawn = Instantiate(go,
                                        new Vector3(pos.x, pos.y, 0),
                                        Quaternion.identity) as GameObject;
-        Destroy(spawn.gameObject, 2f);
+        spawn.GetComponent<SpriteRenderer>().sortingOrder = 6;
+        StartCoroutine("ShowCard");
+        Destroy(spawn.gameObject, 3f);
+        Destroy(go, 0f);
         //GameObject loadItem = Instantiate(sprite) as GameObject;
+    }
+
+    public IEnumerable ShowCard()
+    {
+
+        yield return new WaitForSeconds(3.1f);
     }
 
     public Sprite MatchSpriteWithItem(Item item)
