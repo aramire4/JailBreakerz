@@ -15,7 +15,7 @@ public class InstantiateItems : MonoBehaviour {
                                        new Vector3(pos.x, pos.y, 0),
                                        Quaternion.identity) as GameObject;
         spawn.GetComponent<SpriteRenderer>().sortingOrder = 6;
-        StartCoroutine("ShowCard");
+        //StartCoroutine("ShowCard");
         Destroy(spawn.gameObject, 3f);
         Destroy(go, 0f);
         //GameObject loadItem = Instantiate(sprite) as GameObject;
