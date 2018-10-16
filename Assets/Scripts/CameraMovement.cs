@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CameraMovement : MonoBehaviour {
+public class CameraMovement : MonoBehaviour
+{
     public float boundary;
     public Vector2 originalCameraPosition;
 
@@ -15,16 +16,23 @@ public class CameraMovement : MonoBehaviour {
     public GameObject currentPlayer;
     public GameObject currentGuard;
 
-	// Use this for initialization
-	void Start () {
+
+    // Use this for initialization
+    void Start()
+    {
         screenWidth = Screen.width;
         screenHeight = Screen.height;
         boundary = 20;
         pos = transform.position;
         playerFocus = true;
         //set originalCameraPosition;
-	}
-	
+    }
+
+    public Vector2 GetPosition()
+    {
+        return transform.position;
+    }
+
 	// Update is called once per frame
 	void Update () {
         currentPlayer = GameObject.Find("StateMachine").GetComponent<GameState>().GetObjectFromState();

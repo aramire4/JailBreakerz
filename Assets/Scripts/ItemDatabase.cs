@@ -76,6 +76,10 @@ public class ItemDatabase : MonoBehaviour{
         System.Random rnd = new System.Random();
         Item ret = database[rnd.Next(database.Count)];
         database.Remove(ret);
+        /*
+        Vector2 pos = GameObject.Find("MainCamera").GetComponent<CameraMovement>().GetPosition();
+        GameObject.Find("Items").GetComponent<InstantiateItems>().InstantiateItem(ret, pos);
+        */
         return ret;
     }
 
@@ -123,6 +127,10 @@ public class ItemDatabase : MonoBehaviour{
         else if (item.location == "kitchen")
         {
             kitchenDatabase.Add(item);
+        }
+        else if (item.location == "shower")
+        {
+            showerDatabase.Add(item);
         }
     }
 
@@ -300,7 +308,7 @@ public class ItemDatabase : MonoBehaviour{
         book.identifier = 3;
         book.itemName = "Book";
         book.description = "Nice reading material to help pass the time in jail";
-        book.location = "visitor center";
+        book.location = "visitor";
         book.type = "none";
         book.use = "none";
         book.rare = false;
@@ -311,7 +319,7 @@ public class ItemDatabase : MonoBehaviour{
         flowers.identifier = 6;
         flowers.itemName = "Flowers";
         flowers.description = "Stops a fight (range 1)";
-        flowers.location = "visitor center";
+        flowers.location = "visitor";
         flowers.type = "stall";
         flowers.use = "counter";
         flowers.rare = false;
@@ -322,7 +330,7 @@ public class ItemDatabase : MonoBehaviour{
         key.identifier = 8;
         key.itemName = "Key";
         key.description = "Unlocks the front door";
-        key.location = "visitor center";
+        key.location = "visitor";
         key.type = "none";
         key.use = "none";
         key.rare = false;
@@ -333,7 +341,7 @@ public class ItemDatabase : MonoBehaviour{
         knife.identifier = 9;
         knife.itemName = "Knife";
         knife.description = "Use this item to sent a player next to you to the infirmary (range 1) (weapon)";
-        knife.location = "visitor center";
+        knife.location = "visitor";
         knife.type = "weapon";
         knife.use = "other";
         knife.rare = false;
@@ -344,7 +352,7 @@ public class ItemDatabase : MonoBehaviour{
         visitorCenterRiot.identifier = 15;
         visitorCenterRiot.itemName = "Visitor Center Riot";
         visitorCenterRiot.description = "Use this item to send a warden to the visitor center (distraction)";
-        visitorCenterRiot.location = "visitor center";
+        visitorCenterRiot.location = "visitor";
         visitorCenterRiot.type = "distraction";
         visitorCenterRiot.use = "other";
         visitorCenterRiot.rare = true;
@@ -354,7 +362,7 @@ public class ItemDatabase : MonoBehaviour{
         phone.identifier = -2;
         phone.itemName = "On the phone for too long";
         phone.description = "Go to solitary";
-        phone.location = "visitor center";
+        phone.location = "visitor";
         phone.type = "hazard";
         phone.use = "move";
         phone.rare = false;

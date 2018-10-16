@@ -19,7 +19,7 @@ public class PlayerMovement : MonoBehaviour
     private int inputAvailable = 0;
     private int movesMade = 0;
     private int interractionCheck;
-    private bool hasRolled;
+    //private bool hasRolled;
     private GameObject current;
 
     // Use this for initialization
@@ -38,7 +38,6 @@ public class PlayerMovement : MonoBehaviour
         controllingGuard = false;
     }
 
-
     public void EndTurn()
     {
         pos = transform.position;
@@ -46,7 +45,7 @@ public class PlayerMovement : MonoBehaviour
         interractionCheck = 0;
         inputAvailable = 0;
         movesMade = 0;
-        hasRolled = true;
+        //hasRolled = true;
         moveAmount = 0;
         //GetComponent<DiceRoll>().coroutineAllowed = true;
         GameObject.Find("StateMachine").GetComponent<GameState>().NextPlayer();
@@ -172,7 +171,7 @@ public class PlayerMovement : MonoBehaviour
                     interractionCheck = 0;
                     inputAvailable = 0;
                     movesMade = 0;//moveAmount;
-                    hasRolled = true;
+                    //hasRolled = true;
                     moveAmount = 0;
                     //GetComponent<DiceRoll>().coroutineAllowed = true;
                     GameObject.Find("StateMachine").GetComponent<GameState>().NextPlayer();
@@ -193,7 +192,7 @@ public class PlayerMovement : MonoBehaviour
                         //interractionCheck = 0;
                         inputAvailable = 0;
                         movesMade = 0;
-                        hasRolled = true;
+                        //hasRolled = true;
                         moveAmount = 0;
                         GameObject.Find("GuardState").GetComponent<GuardStates>().NextState();
                         //GameObject.Find("StateMachine").GetComponent<GameState>().NextPlayer();

@@ -74,6 +74,7 @@
     <Compile Include="Assets\Scripts\Guards\GuardMovement.cs" />
     <Compile Include="Assets\Scripts\Guards\GuardStates.cs" />
     <Compile Include="Assets\Scripts\HazardMovement.cs" />
+    <Compile Include="Assets\Scripts\InstantiateItems.cs" />
     <Compile Include="Assets\Scripts\InstantiatePlayers.cs" />
     <Compile Include="Assets\Scripts\InstructionCanvas.cs" />
     <Compile Include="Assets\Scripts\Item.cs" />
