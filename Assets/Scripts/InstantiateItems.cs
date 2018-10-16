@@ -63,7 +63,7 @@ public class InstantiateItems : MonoBehaviour {
                 //paper cut sprite
                 ret = Resources.Load<Sprite>("Hazards/PaperCut");
             }
-            else if(item.location == "showers")
+            else if(item.location == "shower")
             {
                 //slip sprite
                 ret = Resources.Load<Sprite>("Hazards/Slip");
