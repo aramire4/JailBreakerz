@@ -44,10 +44,10 @@ public class InstantiateItems : MonoBehaviour {
                 if (item.rare == false) ret = Resources.Load<Sprite>("Stats/Smarts-1");//+1 smarts
                 else ret = Resources.Load<Sprite>("Stats/Smarts-2");//+2 smarts
             }
-            else if (item.location == "showers")
+            else if (item.location == "shower")
             {
-                if (item.rare == false) ret = Resources.Load<Sprite>("Stats/Looks-1");//+1 smarts
-                else ret = Resources.Load<Sprite>("Stats/Looks-2");//+2 smarts
+                if (item.rare == false) ret = Resources.Load<Sprite>("Stats/Looks-1");//+1 looks
+                else ret = Resources.Load<Sprite>("Stats/Looks-2");//+2 looks
             }
         }
         else if (item.identifier == -1)
