@@ -198,6 +198,7 @@
 'Assets/Scripts/Guards/GuardMovement.cs'
 'Assets/Scripts/Guards/GuardStates.cs'
 'Assets/Scripts/HazardMovement.cs'
+'Assets/Scripts/InstantiateItems.cs'
 'Assets/Scripts/InstantiatePlayers.cs'
 'Assets/Scripts/InstructionCanvas.cs'
 'Assets/Scripts/Item.cs'

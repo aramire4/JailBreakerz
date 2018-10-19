@@ -15,8 +15,11 @@ EditorBuildSettings:
     path: Assets/Scenes/MainGame.unity
     guid: 6c352e6a81fed4f109f0d5372f21bb62
   - enabled: 1
-    path: Assets/WinnerScreen.unity
-    guid: 756a9ebda985a4f95821d350960ff4b1
+    path: Assets/Scenes/WinnerScreen.unity
+    guid: 184281cd601b44eefb1d8dca982f38bd
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
